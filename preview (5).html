@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal CV website of Angel Chopra">
+  <title>Angel Chopra | Finance & Accounting Student</title>
+
+  <style>
+    /* Basic page settings */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Main page container */
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* Header section */
+    header {
+      background: #0b1f3a;
+      color: white;
+      padding: 70px 20px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .profile-photo {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      background: #e9edf5;
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin-bottom: 8px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 400;
+      color: #dce7f8;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: #e8eef8;
+    }
+
+    /* Main content sections */
+    main {
+      padding: 55px 0;
+    }
+
+    section {
+      background: white;
+      padding: 35px;
+      margin-bottom: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
+    }
+
+    section h2 {
+      color: #0b1f3a;
+      font-size: 1.65rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 45px;
+      height: 3px;
+      background: #1f5fae;
+      margin-top: 7px;
+      border-radius: 5px;
+    }
+
+    /* Skills tags */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: #eaf1fb;
+      color: #0b3d73;
+      border: 1px solid #cbdcf1;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    /* Education and qualification cards */
+    .card {
+      border-left: 4px solid #1f5fae;
+      padding: 5px 0 5px 20px;
+      margin-bottom: 25px;
+    }
+
+    .card:last-child {
+      margin-bottom: 0;
+    }
+
+    .card h3 {
+      color: #172033;
+      margin-bottom: 4px;
+    }
+
+    .date {
+      color: #5e6b7d;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    .card ul {
+      margin: 8px 0 0 20px;
+    }
+
+    /* Connect section */
+    .connect-section {
+      text-align: center;
+      background: #0b1f3a;
+      color: white;
+      padding: 55px 30px;
+    }
+
+    .connect-section h2 {
+      color: white;
+    }
+
+    .connect-section h2::after {
+      background: white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .connect-section p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #dce7f8;
+    }
+
+    .connect-button {
+      border: none;
+      background: white;
+      color: #0b1f3a;
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .connect-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #687589;
+      font-size: 0.9rem;
+    }
+
+    /* Pop-up background */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(4, 15, 30, 0.72);
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Pop-up box */
+    .modal-content {
+      position: relative;
+      background: white;
+      width: min(550px, 100%);
+      border-radius: 16px;
+      padding: 35px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-content h2 {
+      color: #0b1f3a;
+      margin-bottom: 6px;
+    }
+
+    .modal-description {
+      color: #687589;
+      margin-bottom: 25px;
+    }
+
+    /* Close button */
+    .close-button {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: transparent;
+      color: #596678;
+      font-size: 1.7rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .close-button:hover {
+      background: #eef2f7;
+    }
+
+    /* Form fields */
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+      color: #243047;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .country-select {
+      width: 100%;
+      border: 1px solid #ccd5e2;
+      border-radius: 8px;
+      padding: 12px 13px;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .country-select:focus {
+      border-color: #1f5fae;
+      box-shadow: 0 0 0 3px rgba(31, 95, 174, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Mobile number row */
+    .phone-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .country-box {
+      width: 155px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #ccd5e2;
+      border-radius: 8px;
+      padding: 0 8px;
+      background: white;
+      flex-shrink: 0;
+    }
+
+    .country-flag {
+      width: 24px;
+      height: 18px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .country-select {
+      border: none;
+      padding: 11px 2px;
+      box-shadow: none;
+      min-width: 0;
+    }
+
+    .country-select:focus {
+      box-shadow: none;
+    }
+
+    .phone-input {
+      min-width: 0;
+    }
+
+    /* Error and status messages */
+    .error-message {
+      display: none;
+      color: #c62828;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .success-message {
+      display: none;
+      background: #eaf7ef;
+      color: #176b36;
+      border: 1px solid #b9e1c7;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .submit-button {
+      width: 100%;
+      border: none;
+      background: #0b1f3a;
+      color: white;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .submit-button:hover {
+      background: #143b68;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* Mobile layout */
+    @media (max-width: 650px) {
+      header {
+        padding: 50px 20px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-photo {
+        width: 125px;
+        height: 125px;
+      }
+
+      section {
+        padding: 25px;
+      }
+
+      .phone-row {
+        flex-direction: column;
+      }
+
+      .country-box {
+        width: 100%;
+      }
+
+      .modal-content {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header with profile photo and name -->
+  <header>
+    <div class="hero">
+      <img
+        src="profile.jpg"
+        alt="Angel Chopra profile photo"
+        class="profile-photo"
+      >
+
+      <div>
+        <h1>Angel Chopra</h1>
+        <h2>Finance &amp; Accounting Student | ACCA</h2>
+        <p>
+          Finance and accounting student pursuing B.Com in Applied Finance and
+          Analytics with ACCA at Chandigarh University, in collaboration with
+          Grant Thornton.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- About section -->
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Building a strong foundation in accounting, financial concepts and
+        analytical thinking, with working knowledge of Microsoft Excel.
+        Motivated to gain practical exposure through internships and learn from
+        industry professionals while preparing for the ACCA qualification.
+      </p>
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <div class="skills">
+        <span class="skill-tag">Financial Accounting</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">Microsoft Word</span>
+        <span class="skill-tag">Analytical Thinking</span>
+        <span class="skill-tag">Continuous Learning</span>
+        <span class="skill-tag">Business Fundamentals</span>
+      </div>
+    </section>
+
+    <!-- Education section -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="card">
+        <h3>Chandigarh University</h3>
+        <div class="date">July 2026 – 2030</div>
+
+        <p>
+          <strong>
+            B.Com in Applied Finance and Analytics with ACCA
+          </strong>,
+          in collaboration with Grant Thornton (GSFA Department)
+        </p>
+
+        <ul>
+          <li>
+            Integrated degree pathway combining B.Com (Hons.) coursework with
+            ACCA qualification preparation
+          </li>
+          <li>Focus areas: Accounting, Finance, Analytics</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Mount Carmel School</h3>
+        <div class="date">March 2024 – March 2026</div>
+        <p><strong>Class 12, Commerce Stream</strong></p>
+      </div>
+    </section>
+
+    <!-- Professional qualification section -->
+    <section id="qualifications">
+      <h2>Professional Qualification</h2>
+
+      <div class="card">
+        <h3>ACCA — Association of Chartered Certified Accountants</h3>
+        <div class="date">In progress</div>
+        <p>
+          Preparing for ACCA qualification alongside B.Com studies.
+        </p>
+      </div>
+    </section>
+
+    <!-- Career objective section -->
+    <section id="objective">
+      <h2>Career Objective</h2>
+
+      <p>
+        Seeking internship or entry-level exposure in accounting and finance
+        to connect classroom knowledge with real-world financial practice and
+        grow into a well-rounded finance professional.
+      </p>
+    </section>
+
+    <!-- Connect section -->
+    <section class="connect-section">
+      <h2>Let's Connect</h2>
+
+      <p>
+        Interested in connecting regarding internship opportunities,
+        accounting, finance or professional learning.
+      </p>
+
+      <button class="connect-button" id="connectButton" type="button">
+        Connect with me
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Angel Chopra
+  </footer>
+
+
+  <!-- Enquiry pop-up -->
+  <div
+    class="modal"
+    id="enquiryModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div class="modal-content">
+
+      <button
+        class="close-button"
+        id="closeButton"
+        type="button"
+        aria-label="Close enquiry form"
+      >
+        &times;
+      </button>
+
+      <h2 id="modalTitle">Connect with me</h2>
+
+      <p class="modal-description">
+        Please fill in the details below.
+      </p>
+
+      <!-- Success message -->
+      <div class="success-message" id="successMessage"></div>
+
+      <!-- Enquiry form -->
+      <form id="enquiryForm" novalidate>
+
+        <!-- Full name -->
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="name"
+            required
+          >
+          <div class="error-message" id="nameError"></div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required
+          >
+          <div class="error-message" id="emailError">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <!-- Mobile number -->
+        <div class="form-group">
+          <label for="mobile">Mobile number</label>
+
+          <div class="phone-row">
+
+            <div class="country-box">
+              <img
+                id="countryFlag"
+                class="country-flag"
+                src="https://flagcdn.com/24x18/in.png"
+                alt="India flag"
+              >
+
+              <select
+                id="countryCode"
+                class="country-select"
+                aria-label="Country code"
+              >
+                <option value="IN" data-code="+91">IN +91</option>
+                <option value="US" data-code="+1">US +1</option>
+                <option value="GB" data-code="+44">GB +44</option>
+                <option value="AE" data-code="+971">AE +971</option>
+                <option value="CA" data-code="+1">CA +1</option>
+                <option value="AU" data-code="+61">AU +61</option>
+                <option value="SG" data-code="+65">SG +65</option>
+                <option value="SA" data-code="+966">SA +966</option>
+                <option value="QA" data-code="+974">QA +974</option>
+                <option value="NP" data-code="+977">NP +977</option>
+                <option value="BD" data-code="+880">BD +880</option>
+                <option value="LK" data-code="+94">LK +94</option>
+                <option value="DE" data-code="+49">DE +49</option>
+              </select>
+            </div>
+
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              class="phone-input"
+              inputmode="numeric"
+              autocomplete="tel"
+              pattern="[6-9][0-9]{9}"
+              required
+            >
+
+          </div>
+
+          <div class="error-message" id="mobileError"></div>
+        </div>
+
+        <!-- Enquiry -->
+        <div class="form-group">
+          <label for="enquiry">Enquiry</label>
+          <textarea
+            id="enquiry"
+            name="enquiry"
+            required
+          ></textarea>
+          <div class="error-message" id="enquiryError"></div>
+        </div>
+
+        <!-- Server/API error -->
+        <div class="error-message" id="serverError"></div>
+
+        <button
+          type="submit"
+          class="submit-button"
+          id="submitButton"
+        >
+          Submit
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    // Store your n8n webhook URL here.
+    const WEBHOOK_URL = "PASTE_YOUR_N8N_WEBHOOK_URL_HERE";
+
+    // Add your optional IPinfo token here if you have one.
+    const IPINFO_TOKEN = "";
+
+    // This regex checks whether the email has a valid basic format.
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+
+    // Store the visitor's location information here.
+    let visitor = {
+      city: "",
+      region: "",
+      country: ""
+    };
+
+    // Make sure the IPinfo API is called only once.
+    let locationFetched = false;
+
+
+    // Get the important form elements.
+    const modal = document.getElementById("enquiryModal");
+    const connectButton = document.getElementById("connectButton");
+    const closeButton = document.getElementById("closeButton");
+    const enquiryForm = document.getElementById("enquiryForm");
+
+    const countryCode = document.getElementById("countryCode");
+    const countryFlag = document.getElementById("countryFlag");
+    const mobileInput = document.getElementById("mobile");
+
+    const emailInput = document.getElementById("email");
+    const nameInput = document.getElementById("name");
+    const enquiryInput = document.getElementById("enquiry");
+
+    const emailError = document.getElementById("emailError");
+    const mobileError = document.getElementById("mobileError");
+    const serverError = document.getElementById("serverError");
+    const successMessage = document.getElementById("successMessage");
+
+    const submitButton = document.getElementById("submitButton");
+
+
+    // Return the dial code for the selected country.
+    function getDialCode() {
+      const selectedOption =
+        countryCode.options[countryCode.selectedIndex];
+
+      return selectedOption.dataset.code;
+    }
+
+
+    // Update the flag and mobile validation rule.
+    function updateCountrySettings() {
+      const selectedCountry = countryCode.value.toLowerCase();
+
+      // Change the flag image using the country code.
+      countryFlag.src =
+        "https://flagcdn.com/24x18/" + selectedCountry + ".png";
+
+      countryFlag.alt =
+        countryCode.value + " flag";
+
+      // India needs exactly 10 digits starting with 6, 7, 8 or 9.
+      if (countryCode.value === "IN") {
+        mobileInput.pattern = "[6-9][0-9]{9}";
+        mobileInput.maxLength = 10;
+        mobileInput.minLength = 10;
+      }
+
+      // Other countries accept 6 to 15 digits.
+      else {
+        mobileInput.pattern = "[0-9]{6,15}";
+        mobileInput.maxLength = 15;
+        mobileInput.minLength = 6;
+      }
+
+      // Clear an old mobile error after changing country.
+      mobileError.textContent = "";
+      mobileError.classList.remove("show");
+    }
+
+
+    // Select a country from the country code returned by IPinfo.
+    function selectVisitorCountry(country) {
+      const upperCountry = String(country || "").toUpperCase();
+
+      const matchingOption =
+        Array.from(countryCode.options).find(
+          option => option.value === upperCountry
+        );
+
+      // If the country is supported, select it.
+      // Otherwise, keep India as requested.
+      if (matchingOption) {
+        countryCode.value = upperCountry;
+      } else {
+        countryCode.value = "IN";
+      }
+
+      updateCountrySettings();
+    }
+
+
+    // Call IPinfo only when the Connect pop-up is opened.
+    async function fetchVisitorLocation() {
+      if (locationFetched) {
+        return;
+      }
+
+      locationFetched = true;
+
+      try {
+        // Build the API URL.
+        let apiUrl = "https://ipinfo.io/json";
+
+        // Add the token only when it is not empty.
+        if (IPINFO_TOKEN.trim() !== "") {
+          apiUrl += "?token=" + encodeURIComponent(IPINFO_TOKEN);
+        }
+
+        // Get the visitor information.
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error("IPinfo request failed");
+        }
+
+        const result = await response.json();
+
+        // Print the complete IPinfo reply in the browser console.
+        console.log("IPinfo reply:", result);
+
+        // Save the location information for the final JSON.
+        visitor.city = result.city || "";
+        visitor.region = result.region || "";
+        visitor.country = result.country || "";
+
+        // Select the country and update its flag.
+        selectVisitorCountry(result.country);
+
+      } catch (error) {
+        // Do not show an error to the visitor.
+        // Use India and empty location values if the API fails.
+        console.log("IPinfo lookup failed. Using default India settings.");
+
+        visitor = {
+          city: "",
+          region: "",
+          country: ""
+        };
+
+        countryCode.value = "IN";
+        updateCountrySettings();
+      }
+    }
+
+
+    // Open the Connect pop-up.
+    connectButton.addEventListener("click", function () {
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+
+      fetchVisitorLocation();
+
+      setTimeout(function () {
+        nameInput.focus();
+      }, 50);
+    });
+
+
+    // Close the Connect pop-up.
+    function closeModal() {
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+
+    // Close when the X button is clicked.
+    closeButton.addEventListener("click", closeModal);
+
+
+    // Close when the user clicks outside the pop-up box.
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+
+    // Close the pop-up when the Escape key is pressed.
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && modal.classList.contains("show")) {
+        closeModal();
+      }
+    });
+
+
+    // Change the flag and validation when the country changes.
+    countryCode.addEventListener("change", updateCountrySettings);
+
+
+    // Check the email using the required regex and .test() method.
+    emailInput.addEventListener("input", function () {
+      if (EMAIL_REGEX.test(emailInput.value.trim())) {
+        emailError.classList.remove("show");
+      } else {
+        emailError.classList.add("show");
+      }
+    });
+
+
+    // Allow only numeric characters in the mobile field.
+    mobileInput.addEventListener("input", function () {
+      mobileInput.value = mobileInput.value.replace(/[^0-9]/g, "");
+
+      mobileError.classList.remove("show");
+      mobileError.textContent = "";
+    });
+
+
+    // Validate the mobile number according to the selected country.
+    function validateMobile() {
+      const number = mobileInput.value.trim();
+
+      if (countryCode.value === "IN") {
+        if (!/^[6-9][0-9]{9}$/.test(number)) {
+          mobileError.textContent =
+            "For India, enter exactly 10 digits starting with 6, 7, 8 or 9.";
+
+          mobileError.classList.add("show");
+          return false;
+        }
+      } else {
+        if (!/^[0-9]{6,15}$/.test(number)) {
+          mobileError.textContent =
+            "Please enter a mobile number containing 6 to 15 digits.";
+
+          mobileError.classList.add("show");
+          return false;
+        }
+      }
+
+      mobileError.classList.remove("show");
+      return true;
+    }
+
+
+    // Validate the complete form before sending anything.
+    function validateForm() {
+      let valid = true;
+
+      // Check the name.
+      if (nameInput.value.trim() === "") {
+        valid = false;
+        document.getElementById("nameError").textContent =
+          "Please enter your full name.";
+        document.getElementById("nameError").classList.add("show");
+      } else {
+        document.getElementById("nameError").classList.remove("show");
+      }
+
+      // Check the email.
+      if (!EMAIL_REGEX.test(emailInput.value.trim())) {
+        valid = false;
+        emailError.textContent =
+          "Please enter a valid email address.";
+        emailError.classList.add("show");
+      } else {
+        emailError.classList.remove("show");
+      }
+
+      // Check the mobile number.
+      if (!validateMobile()) {
+        valid = false;
+      }
+
+      // Check the enquiry.
+      if (enquiryInput.value.trim() === "") {
+        valid = false;
+        document.getElementById("enquiryError").textContent =
+          "Please enter your enquiry.";
+        document.getElementById("enquiryError").classList.add("show");
+      } else {
+        document.getElementById("enquiryError").classList.remove("show");
+      }
+
+      return valid;
+    }
+
+
+    // Remove validation messages while the user types.
+    nameInput.addEventListener("input", function () {
+      if (nameInput.value.trim() !== "") {
+        document.getElementById("nameError").classList.remove("show");
+      }
+    });
+
+
+    enquiryInput.addEventListener("input", function () {
+      if (enquiryInput.value.trim() !== "") {
+        document.getElementById("enquiryError").classList.remove("show");
+      }
+    });
+
+
+    // Handle form submission.
+    enquiryForm.addEventListener("submit", async function (event) {
+      // Stop the normal page reload.
+      event.preventDefault();
+
+      // Clear old server errors.
+      serverError.textContent = "";
+      serverError.classList.remove("show");
+
+      // Hide the previous success message.
+      successMessage.textContent = "";
+      successMessage.classList.remove("show");
+
+      // Validate the form.
+      if (!validateForm()) {
+        return;
+      }
+
+      // Check whether the webhook URL has been replaced.
+      if (WEBHOOK_URL.includes("PASTE_YOUR")) {
+        alert(
+          "Please replace PASTE_YOUR_N8N_WEBHOOK_URL_HERE with your actual n8n webhook URL before submitting the form."
+        );
+        return;
+      }
+
+      // Get the selected dial code.
+      const dialCode = getDialCode();
+
+      // Build the JSON object required by n8n.
+      const data = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        mobile: dialCode + " " + mobileInput.value.trim(),
+        enquiry: enquiryInput.value.trim(),
+        source: "CV website",
+        visitor: {
+          city: visitor.city,
+          region: visitor.region,
+          country: visitor.country
+        }
+      };
+
+      // Print the JSON data in the browser console.
+      console.log("Enquiry data:", data);
+
+      // Show Sending... while the request is running.
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      try {
+        // Send the enquiry to n8n.
+        const response = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        // Handle a successful response.
+        if (response.ok) {
+          successMessage.textContent =
+            "Thank you, " + data.name +
+            ". Your enquiry has been received.";
+
+          successMessage.classList.add("show");
+
+          // Clear the form after successful submission.
+          enquiryForm.reset();
+
+          // Restore India as the form's default country.
+          countryCode.value = "IN";
+          updateCountrySettings();
+
+          return;
+        }
+
+        // Handle n8n validation errors with HTTP 400.
+        if (response.status === 400) {
+          let errorData = {};
+
+          try {
+            errorData = await response.json();
+          } catch (jsonError) {
+            errorData = {};
+          }
+
+          serverError.textContent =
+            errorData.message ||
+            "There was a problem with your enquiry.";
+
+          serverError.classList.add("show");
+
+          return;
+        }
+
+        // Handle all other unsuccessful HTTP responses.
+        serverError.textContent =
+          "Sorry, we could not send your enquiry. Please try again later.";
+
+        serverError.classList.add("show");
+
+      } catch (error) {
+        // Handle network errors or other fetch failures.
+        serverError.textContent =
+          "Sorry, something went wrong while sending your enquiry. Please try again later.";
+
+        serverError.classList.add("show");
+
+        console.error("Webhook request failed:", error);
+
+      } finally {
+        // Restore the Submit button.
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit";
+      }
+    });
+
+
+    // Set the correct initial country settings.
+    updateCountrySettings();
+  </script>
+
+</body>
+</html>
